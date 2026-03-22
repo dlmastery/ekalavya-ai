@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/abhir/.claude/projects/C--Users-abhir-drona/**)",
+      "Read(//c/Users/abhir/.claude/projects/C--Users-abhir-drona/memory/**)",
+      "Bash(git init:*)"
+    ]
+  }
+}
