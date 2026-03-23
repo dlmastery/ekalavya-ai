@@ -90,6 +90,7 @@ export function OnboardingWizard() {
           learningStyle: selectedStyle,
         })
         setProfile(profile)
+        document.cookie = 'ekalavya-onboarded=true; path=/; max-age=31536000'
         router.push('/home')
       } catch {
         // Fallback: still navigate on error
