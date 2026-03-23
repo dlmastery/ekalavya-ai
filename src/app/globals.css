@@ -1,19 +1,163 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ===== Ekalavya AI Design System ===== */
+/* Palette: "Warm Earth & Bright Sky"    */
+
+:root,
+[data-theme="light"] {
+  /* Primary: Saffron #FF9933 */
+  --primary: 30 100% 60%;
+  --primary-foreground: 0 0% 100%;
+
+  /* Secondary: Sky Blue #2196F3 */
+  --secondary: 207 90% 54%;
+  --secondary-foreground: 0 0% 100%;
+
+  /* Destructive: Warm Red #E53935 */
+  --destructive: 1 76% 55%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* Accent: Light saffron tint */
+  --accent: 30 100% 95%;
+  --accent-foreground: 30 60% 30%;
+
+  /* Background: Cloud White #FAFAFA */
+  --background: 0 0% 98%;
+  --foreground: 0 0% 13%;
+
+  /* Card: Warm White #FFF8F0 */
+  --card: 30 100% 97%;
+  --card-foreground: 0 0% 13%;
+
+  /* Popover: same as card */
+  --popover: 30 100% 97%;
+  --popover-foreground: 0 0% 13%;
+
+  /* Muted: warm gray */
+  --muted: 30 10% 94%;
+  --muted-foreground: 0 0% 45%;
+
+  /* Border: Mist #E0E0E0 */
+  --border: 0 0% 88%;
+
+  /* Input border */
+  --input: 0 0% 88%;
+
+  /* Ring: Saffron focus ring */
+  --ring: 30 100% 60%;
+
+  /* Chart colors */
+  --chart-1: 30 100% 60%;
+  --chart-2: 207 90% 54%;
+  --chart-3: 123 38% 57%;
+  --chart-4: 1 76% 55%;
+  --chart-5: 45 100% 51%;
+
+  /* Border radius */
+  --radius: 0.75rem;
+
+  /* Sidebar (for shadcn sidebar component) */
+  --sidebar: 30 100% 97%;
+  --sidebar-foreground: 0 0% 13%;
+  --sidebar-primary: 30 100% 60%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 30 100% 95%;
+  --sidebar-accent-foreground: 30 60% 30%;
+  --sidebar-border: 0 0% 88%;
+  --sidebar-ring: 30 100% 60%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark,
+[data-theme="dark"] {
+  /* Primary: slightly lighter saffron for dark readability */
+  --primary: 30 100% 65%;
+  --primary-foreground: 0 0% 10%;
+
+  /* Secondary */
+  --secondary: 207 90% 60%;
+  --secondary-foreground: 0 0% 100%;
+
+  /* Destructive */
+  --destructive: 1 76% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* Accent */
+  --accent: 30 30% 20%;
+  --accent-foreground: 30 100% 80%;
+
+  /* Background: Night #121212 */
+  --background: 0 0% 7%;
+  --foreground: 0 0% 96%;
+
+  /* Card: Dark Surface #1E1E2E */
+  --card: 240 24% 15%;
+  --card-foreground: 0 0% 96%;
+
+  /* Popover */
+  --popover: 240 24% 15%;
+  --popover-foreground: 0 0% 96%;
+
+  /* Muted */
+  --muted: 240 10% 20%;
+  --muted-foreground: 0 0% 65%;
+
+  /* Border: darker */
+  --border: 240 10% 25%;
+
+  /* Input */
+  --input: 240 10% 25%;
+
+  /* Ring */
+  --ring: 30 100% 65%;
+
+  /* Chart colors */
+  --chart-1: 30 100% 65%;
+  --chart-2: 207 90% 60%;
+  --chart-3: 123 38% 50%;
+  --chart-4: 1 76% 60%;
+  --chart-5: 45 100% 55%;
+
+  /* Sidebar */
+  --sidebar: 240 24% 12%;
+  --sidebar-foreground: 0 0% 96%;
+  --sidebar-primary: 30 100% 65%;
+  --sidebar-primary-foreground: 0 0% 10%;
+  --sidebar-accent: 30 30% 20%;
+  --sidebar-accent-foreground: 30 100% 80%;
+  --sidebar-border: 240 10% 25%;
+  --sidebar-ring: 30 100% 65%;
 }
+
+/* ===== Base Styles ===== */
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Noto Sans', var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Duolingo-style 3D Pushable Button ===== */
+
+.btn-3d {
+  position: relative;
+  border-bottom: 4px solid hsl(30 80% 45%);
+  transition: all 0.1s ease;
+  transform: translateY(0);
+}
+
+.btn-3d:hover {
+  filter: brightness(1.05);
+}
+
+.btn-3d:active {
+  border-bottom-width: 1px;
+  transform: translateY(3px);
+}
+
+/* Dark mode 3D button shadow adjustment */
+.dark .btn-3d {
+  border-bottom-color: hsl(30 80% 35%);
 }
