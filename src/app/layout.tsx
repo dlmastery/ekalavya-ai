@@ -1,34 +1,36 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import type { Metadata, Viewport } from 'next'
+import { Noto_Sans } from 'next/font/google'
+import './globals.css'
+import { ThemeProvider } from '@/lib/providers/theme-provider'
+import { MockDataContextProvider } from '@/lib/providers/mock-data-context'
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const notoSans = Noto_Sans({
+  subsets: ['latin', 'devanagari'],
+  variable: '--font-noto-sans',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
-  title: "Ekalavya AI",
-  description: "AI-powered tutoring platform",
-};
+  title: 'Ekalavya AI',
+  description: 'Your curious learning companion — No Child, No Teen, No Adult Left Behind',
+}
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="en" className={notoSans.variable} suppressHydrationWarning>
+      <body className="font-sans antialiased bg-background text-foreground">
+        <ThemeProvider>
+          <MockDataContextProvider>
+            {children}
+          </MockDataContextProvider>
+        </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }
